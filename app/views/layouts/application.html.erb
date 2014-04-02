@@ -8,6 +8,21 @@
 </head>
 <body>
 
+<% puts request.env['PATH_INFO'] + "" + new_user_registration_path
+if request.env['PATH_INFO'] != new_user_registration_path %>
+  <nav>
+      <ul>   
+          <% if !user_signed_in? %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% else %>
+            <li>Welcome <%= current_user.name %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+          <% end %>
+      </ul>
+  </nav>
+<% end %>
+
+
 <% if flash[:notice].present? %>
   <%= flash[:notice] %>
 <% end %>
