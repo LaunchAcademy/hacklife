@@ -1,6 +1,6 @@
 Hacklife::Application.routes.draw do
   devise_for :users
-  root 'welcome#index'
+  root 'life_hacks#index'
   resources :life_hacks, only: [:new, :index, :create]
   
   # The priority is based upon order of creation: first created -> highest priority.

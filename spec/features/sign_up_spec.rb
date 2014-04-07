@@ -32,7 +32,7 @@ feature 'user signs up' , %Q{
     visit root_path
     click_link "Sign Up"
     user = FactoryGirl.create(:user)
-    fill_in 'Email', with: 'spy@isis.com'
+    fill_in 'Email', with: user.email
     click_on 'Sign Up'
     
     expect(page).to have_content('has already been taken')
@@ -42,7 +42,7 @@ feature 'user signs up' , %Q{
     visit root_path
     click_link "Sign Up"
     user = FactoryGirl.create(:user)
-    fill_in 'Username', with: 'blackturtleneck'
+    fill_in 'Username', with: user.username
     click_on 'Sign Up'
     
     expect(page).to have_content('has already been taken')

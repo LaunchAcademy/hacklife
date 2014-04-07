@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<% if request.env['PATH_INFO'] != new_user_registration_path %>
+<% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
   <nav>
       <ul>   
           <% if !user_signed_in? %>
