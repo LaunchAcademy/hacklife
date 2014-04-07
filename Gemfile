@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'simple_form'
 gem 'devise'
+gem 'carrierwave'
+gem 'rmagick', require: false
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
