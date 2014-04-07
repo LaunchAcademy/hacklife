@@ -19,7 +19,6 @@ feature 'user can create a review for a specific article', %Q{As a user
     fill_in 'Title', with: 'This article is DA BOMB!'
     fill_in 'Body', with: "This is the best article I've ever read"
     choose 1
-    save_and_open_page
     click_on 'Submit Review'
 
     expect(page).to have_content 'Review was successfully added'
