@@ -9,4 +9,6 @@ describe Review do
 
   it { should have_valid(:rating).when(1) }
   it { should_not have_valid(:rating).when(nil, '') }
+
+  it { should belong_to(:life_hack) }
 end

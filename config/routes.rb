@@ -1,6 +1,6 @@
 Hacklife::Application.routes.draw do
   resources :life_hacks, only: [:new, :index, :create, :show] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews
   end
 
 

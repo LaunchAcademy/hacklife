@@ -13,8 +13,8 @@ feature 'user can create a review for a specific article', %Q{As a user
   scenario 'successfully adds a review' do
     life_hack = FactoryGirl.create(:life_hack)
     pre_count = Review.count
+    #binding.pry
     visit life_hack_path(life_hack)
-    save_and_open_page
     click_on "Add a Review"
     fill_in 'Title', with: 'This article is DA BOMB!'
     fill_in 'Body', with: "This is the best article I've ever read"
