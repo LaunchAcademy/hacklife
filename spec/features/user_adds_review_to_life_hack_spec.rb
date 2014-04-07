@@ -18,7 +18,8 @@ feature 'user can create a review for a specific article', %Q{As a user
     click_on "Add a Review"
     fill_in 'Title', with: 'This article is DA BOMB!'
     fill_in 'Body', with: "This is the best article I've ever read"
-    choose 'Rating', with: 1
+    choose 1
+    save_and_open_page
     click_on 'Submit Review'
 
     expect(page).to have_content 'Review was successfully added'
@@ -34,6 +35,6 @@ feature 'user can create a review for a specific article', %Q{As a user
     click_on 'Submit Review'
 
     expect(page).to have_content "can't be blank"
-    expect(LifeHack.count).to eq(pre_count)
+    expect(Review.count).to eq(pre_count)
   end
 end

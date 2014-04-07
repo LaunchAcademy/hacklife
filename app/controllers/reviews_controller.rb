@@ -7,15 +7,15 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @life_hack = LifeHack.find(params[:id])
+    @life_hack = LifeHack.find(params[:life_hack_id])
     @review = @life_hack.reviews.build(review_params)
 
     if @review.save
       redirect_to "/life_hacks/#{@life_hack.id}",
       notice: 'Review was successfully added'
     else
-      flash[:notice] = "There was an issue with your review. Please try again."
-      render 'life_hacks/show'
+      flash[:notice] = "Fields can't be blank"
+      render :new
     end
   end
 
