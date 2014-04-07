@@ -31,7 +31,7 @@ feature 'user can create a review for a specific article', %Q{As a user
   # I can select a rating from 1 to 5 for the article
   # I am redirected towards the index page after I submit an article_1
 
-  cenario 'successfully adds a review' do
+  scenario 'successfully adds a review' do
     pre_count = Review.count
     visit new_life_hack_path
     fill_in 'Title', with: 'This article is DA BOMB!'
