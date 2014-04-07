@@ -16,7 +16,7 @@
             <li><%= link_to "Sign In", new_user_session_path %></li>
           <% else %>
             <li>Welcome <%= current_user.name %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% end %>
       </ul>
   </nav>
@@ -25,6 +25,10 @@
 
 <% if flash[:notice].present? %>
   <%= flash[:notice] %>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <%= flash[:alert] %>
 <% end %>
 
 <%= yield %>
