@@ -5,11 +5,6 @@ feature 'user can create a review for a specific article', %Q{As a user
   I want to create a review for a specific article
   } do
 
-   # ACCEPTANCE CRITERIA
-  # I can write a title and body for the review
-  # I can select a rating from 1 to 5 for the article
-  # I am redirected towards the index page after I submit an article_1
-
   scenario 'successfully adds a review' do
     life_hack = FactoryGirl.create(:life_hack)
     pre_count = Review.count
