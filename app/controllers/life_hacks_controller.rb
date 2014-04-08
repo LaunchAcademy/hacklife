@@ -1,14 +1,13 @@
 class LifeHacksController < ApplicationController
-  before_filter :authenticate_user!, only: :create
+  before_filter :authenticate_user!, only: [:create, :new]
   
   def new
     @life_hack = LifeHack.new
   end
 
   def create
-    params["life_hack"]["user_id"] = current_user.id
     @life_hack = LifeHack.new(life_hack_params)
-    
+    @life_hack.user = current_user
     if @life_hack.save
       redirect_to '/life_hacks', notice: 'LifeHack was successfully added'
     else
@@ -27,6 +26,6 @@ class LifeHacksController < ApplicationController
   private
 
   def life_hack_params
-    params.require(:life_hack).permit(:title, :link, :content, :user_id)
+    params.require(:life_hack).permit(:title, :link, :content)
   end
 end

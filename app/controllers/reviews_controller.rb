@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter :authenticate_user!, only: :create
+  before_filter :authenticate_user!, only: [:create, :new]
 
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
@@ -7,10 +7,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    params["review"]["user_id"] = current_user.id
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = @life_hack.reviews.build(review_params)
-
+    @review.user = current_user
     if @review.save
       redirect_to life_hack_path(@life_hack),
       notice: 'Review was successfully added'
@@ -23,7 +22,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title,:body,:rating,:user_id)
+    params.require(:review).permit(:title,:body,:rating)
   end
 
 end
