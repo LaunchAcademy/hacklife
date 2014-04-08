@@ -1,2 +1,18 @@
 <h1><%= @life_hack.title %></h1>
 <p><%= @life_hack.content %></p>
+
+<%= link_to "Add a Review", new_life_hack_review_path(@life_hack)%>
+<% if @life_hack.reviews.present? %>
+  <div>
+    <ul>
+      <%  @life_hack.reviews.each do |review| %>
+        <li>
+          <h4><%= review.title %></h4>
+          <%= review.body %>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+<% end %>
+
+<%= link_to "Back to Life Hacks", life_hacks_path %>

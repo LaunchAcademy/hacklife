@@ -1,8 +1,14 @@
 <h1>LifeHacks</h1>
 
-<% if @life_hacks.present? %>
-  <% @life_hacks.each do |life_hack| %>
-    <%= link_to life_hack.title, life_hack %>
-    <%= life_hack.content %>
-  <% end %>
-<% end %>
+
+
+    <% @life_hacks.each do |life_hack| %>
+    <div>
+      <%= link_to life_hack.title, life_hack %>
+      <%= life_hack.content %>
+      </div>
+    <% end %>
+
+
+
+<p><%= link_to 'Add Life Hack', new_life_hack_path %></p>
