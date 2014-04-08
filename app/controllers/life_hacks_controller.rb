@@ -16,6 +16,11 @@ class LifeHacksController < ApplicationController
     @life_hacks = LifeHack.all
   end
 
+  def show
+    @life_hack = LifeHack.find(params[:id])
+
+  end
+
   private
 
   def life_hack_params
