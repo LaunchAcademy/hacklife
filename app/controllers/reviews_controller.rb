@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-  # /life_hacks/3/reviews/new
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = Review.new
@@ -19,10 +18,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:title,:body,:rating)
+    params.require(:review).permit(:title,:body,:rating, :user_id)
   end
 
 end
