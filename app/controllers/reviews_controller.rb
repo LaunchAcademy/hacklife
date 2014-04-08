@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user!, only: :create
 
-  # /life_hacks/3/reviews/new
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = Review.new
   end
 
   def create
+    params["review"]["user_id"] = current_user.id
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = @life_hack.reviews.build(review_params)
 
@@ -22,7 +23,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title,:body,:rating)
+    params.require(:review).permit(:title,:body,:rating,:user_id)
   end
 
 end

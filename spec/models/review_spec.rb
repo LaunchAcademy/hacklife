@@ -11,4 +11,6 @@ describe Review do
   it { should_not have_valid(:rating).when(nil, '', 0, 3000, -2) }
 
   it { should belong_to(:life_hack) }
+  it { should belong_to(:user) }
+    
 end

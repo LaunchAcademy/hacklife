@@ -7,6 +7,13 @@ feature 'user adds a lifehack', %Q{
   } do
 
   scenario 'successfully adds a lifehack' do
+    visit root_path
+    user = FactoryGirl.create(:user)
+    click_link "Sign In"
+    fill_in "Email", with: user.email 
+    fill_in "Password", with: user.password
+    click_on "Sign in"
+    
     pre_count = LifeHack.count
     visit new_life_hack_path
     fill_in 'Link', with: 'www.lifehack.com'
@@ -21,6 +28,13 @@ feature 'user adds a lifehack', %Q{
   end
 
   scenario 'enters invalid lifehack' do
+    visit root_path
+    user = FactoryGirl.create(:user)
+    click_link "Sign In"
+    fill_in "Email", with: user.email 
+    fill_in "Password", with: user.password
+    click_on "Sign in"
+    
     pre_count = LifeHack.count
     visit new_life_hack_path
 
