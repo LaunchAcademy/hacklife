@@ -19,6 +19,7 @@ feature 'user signs in' , %Q{
     expect(page).to have_content("Sign Out")    
     
   end
+  
   scenario 'User entering wrong information is given error message and asked to enter correct info' do
     visit root_path
     user = FactoryGirl.create(:user)

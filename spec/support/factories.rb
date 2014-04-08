@@ -1,8 +1,8 @@
 FactoryGirl.define do
 
   factory :life_hack do
-    link 'www.lifehacker.com'
-    title 'how to make a great site'
+    link "www.lifehacker.com"
+    sequence(:title){ |n| "how to make a great site #{n}" }
     content "it's so easy to create an awesome site"
   end
   
@@ -12,7 +12,7 @@ FactoryGirl.define do
       "blackturtleneck#{u}"
     end
     sequence :email do |e|
-      "#{e}@isis.com"
+      "spy#{e}@isis.com"
     end
     password 'password'
     password_confirmation 'password'
