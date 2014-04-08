@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-feature 'user adds a lifehack', %Q{As a user
+feature 'user adds a lifehack', %Q{
+  As a user
   I want to post a lifehack
   so I can share with others
   } do
-
 
   scenario 'successfully adds a lifehack' do
     pre_count = LifeHack.count
