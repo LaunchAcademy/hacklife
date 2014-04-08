@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
-gem 'rmagick', require: false
 gem 'foundation-rails'
 
 group :doc do

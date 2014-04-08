@@ -8,8 +8,12 @@ FactoryGirl.define do
   
   factory :user do
     name 'Sterling Archer'
-    username 'blackturtleneck'
-    email 'spy@isis.com'
+    sequence :username do |u|
+      "blackturtleneck#{u}"
+    end
+    sequence :email do |e|
+      "#{e}@isis.com"
+    end
     password 'password'
     password_confirmation 'password'
   end
