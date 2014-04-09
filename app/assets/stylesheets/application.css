@@ -13,3 +13,8 @@
 
  *= require_tree .
  */
+form {
+  max-width: 200px;
+  background: #ddeeff;
+}
+
