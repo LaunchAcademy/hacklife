@@ -32,7 +32,6 @@ feature 'user signs up' , %Q{
     visit root_path
     click_link "Sign Up"
     user = FactoryGirl.create(:user)
-    binding.pry
     fill_in 'Email', with: user.email
     click_on 'Sign Up'
 

@@ -22,6 +22,7 @@ FactoryGirl.define do
   factory :review do
     title 'Greatest Hack Evah'
     body 'I am now a better person because of this hack'
+    user
     life_hack
     rating 5
   end

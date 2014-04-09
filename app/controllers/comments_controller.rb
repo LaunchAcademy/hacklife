@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_filter :authenticate_user!, only: [:create]
+  before_filter :authenticate_user!, only: [:new, :create]
   def new
     @review = Review.find(params[:review_id])
     @comment = Comment.new
@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     params[:comment][:user_id] = current_user.id
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
+    @comment.user = current_user
 
     if @comment.save
       redirect_to review_path(@review),
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :review_id, :user_id)
+    params.require(:comment).permit(:body, :review_id)
   end
 
 end
