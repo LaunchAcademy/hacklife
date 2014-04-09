@@ -6,19 +6,19 @@ feature 'user signs out' , %Q{
   so weird people can't impersonate me
   } do
   
-  scenario 'Logged in user signs out' do
+  context 'as an authenticated user' do
 
-    visit root_path
-    user = FactoryGirl.create(:user)
-    click_link "Sign In"
-    fill_in "Email", with: user.email 
-    fill_in "Password", with: user.password
+    let(:user){ FactoryGirl.create(:user) }
 
-    click_on "Sign in"
-    
-    click_link "Sign Out"
-    expect(page).to have_content("Sign In")
+    before :each do
+      sign_in_as(user)
+    end
 
+    scenario 'User signs out' do
+      
+      click_link "Sign Out"
+      expect(page).to have_content("Sign In")
+
+    end
   end
-  
 end
