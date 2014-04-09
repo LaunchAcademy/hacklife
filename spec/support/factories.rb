@@ -1,11 +1,5 @@
 FactoryGirl.define do
 
-  factory :life_hack do
-    link "www.lifehacker.com"
-    sequence(:title){ |n| "how to make a great site #{n}" }
-    content "it's so easy to create an awesome site"
-  end
-
   factory :user do
     name 'Sterling Archer'
     sequence :username do |u|
@@ -16,6 +10,13 @@ FactoryGirl.define do
     end
     password 'password'
     password_confirmation 'password'
+  end
+
+  factory :life_hack do
+    link "www.lifehacker.com"
+    sequence(:title){ |n| "how to make a great site #{n}" }
+    content "it's so easy to create an awesome site"
+    user
   end
 
   factory :review do
