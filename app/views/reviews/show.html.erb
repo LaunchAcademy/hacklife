@@ -2,6 +2,10 @@
 
 <div><%= params[:body] %></div>
 
+  <%= simple_form_for (@like) do |f| %>
+  <%= f.button :submit,'Like' %>
+  <% end %>
+
 <h3>Comments</h3>
 
 <%= link_to 'Add a Comment', new_review_comment_path(@review) %>
@@ -17,5 +21,6 @@
     </ul>
   </div>
 <% end %>
+
 
 <%= link_to 'Back to Hack', life_hacks_path %>
