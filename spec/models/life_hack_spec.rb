@@ -7,4 +7,7 @@ describe LifeHack do
 
   it { should have_valid(:content).when('Here\'s how to hack America') }
   it { should_not have_valid(:content).when(nil, '') }
+  
+  it { should belong_to(:user) }
+  
 end
