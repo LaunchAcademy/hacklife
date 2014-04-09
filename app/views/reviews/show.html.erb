@@ -2,9 +2,12 @@
 
 <div><%= params[:body] %></div>
 
-  <%= simple_form_for (@like) do |f| %>
+  <%= simple_form_for @like do |f| %>
+  <%= f.hidden_field :review_id, value: @review.id %>
+  <%= f.hidden_field :score, value: 1 %>
   <%= f.button :submit,'Like' %>
   <% end %>
+
 
 <h3>Comments</h3>
 

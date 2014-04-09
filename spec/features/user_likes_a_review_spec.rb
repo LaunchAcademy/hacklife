@@ -18,12 +18,13 @@ feature 'user can like a specific review for a lifehack', %q{
 
 
     scenario 'successfully likes a review' do
-      likes = 0
+
       visit review_path(review)
       click_button 'Like'
 
+
       expect(page).to have_content 'Review liked!'
-      expect(likes).to eq (likes + 1)
+      expect(user.likes.find_by(review: review).score).to eq(1)
     end
   end
 

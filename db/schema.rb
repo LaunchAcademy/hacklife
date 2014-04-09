@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140409185645) do
   add_index "life_hacks", ["user_id"], name: "index_life_hacks_on_user_id", using: :btree
 
   create_table "likes", force: true do |t|
-    t.integer  "like_type",  null: false
+    t.integer  "score",      null: false
     t.integer  "user_id",    null: false
     t.integer  "review_id",  null: false
     t.datetime "created_at"
