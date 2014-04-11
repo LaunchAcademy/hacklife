@@ -14,7 +14,7 @@
   <body>
     <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
       <nav>
-          <ul>   
+          <ul>
               <% if !user_signed_in? %>
                 <li><%= link_to "Sign Up", new_user_registration_path %></li>
                 <li><%= link_to "Sign In", new_user_session_path %></li>
