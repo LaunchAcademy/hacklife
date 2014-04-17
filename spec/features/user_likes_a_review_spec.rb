@@ -23,9 +23,18 @@ feature 'user can like a specific review for a lifehack', %q{
       click_button 'Like'
 
 
-      expect(page).to have_content 'Review liked!'
+      expect(page).to have_content 'You Voted!'
       expect(user.likes.find_by(review: review).score).to eq(1)
     end
-  end
 
+
+    scenario 'successfully dislikes a review' do
+
+      visit review_path(review)
+      click_button 'Dislike'
+
+      expect(page).to have_content 'You Voted!'
+      expect(user.likes.find_by(review: review).score).to eq(-1)
+    end
+  end
 end

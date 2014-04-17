@@ -23,7 +23,16 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @like = Like.new
+    @like = nil
+    @review.likes.each do |like|
+      if like.user == current_user
+        @like = like
+      end
+    end
+    if @like == nil
+      @like = Like.new
+    end
+
   end
 
   private

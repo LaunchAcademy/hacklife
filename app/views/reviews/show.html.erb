@@ -8,6 +8,16 @@
   <%= f.button :submit,'Like' %>
   <% end %>
 
+  <%= simple_form_for @like do |f| %>
+  <%= f.hidden_field :review_id, value: @review.id %>
+  <%= f.hidden_field :score, value: -1 %>
+  <%= f.button :submit,'Dislike' %>
+  <% end %>
+
+  <div>
+    <h3> Likes </h3>
+    <%=Review.score_count(@review) %>
+  </div>
 
 <h3>Comments</h3>
 

@@ -7,12 +7,25 @@ class LikesController < ApplicationController
 
     if @like.save
       redirect_to review_path(@like.review),
-      notice: 'Review liked!'
+      notice: 'You Voted!'
     else
+      redirect_to review_path(@like.review),
+      alert: 'You already voted for this.'
 
     end
 
    end
+
+   def update
+
+    @like = Like.find(params[:id])
+    @like.score = params[:like][:score]
+    @like.save
+    redirect_to review_path(@like.review),
+    notice: 'Updated'
+
+  end
+
 
   private
 
