@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       redirect_to life_hack_path(@life_hack),
-      notice: 'Review was successfully added'
+        notice: 'Review was successfully added'
     else
       flash[:notice] = "Fields can't be blank"
       render :new

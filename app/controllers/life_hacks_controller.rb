@@ -1,6 +1,6 @@
 class LifeHacksController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
-  
+
   def new
     @life_hack = LifeHack.new
   end
@@ -21,6 +21,12 @@ class LifeHacksController < ApplicationController
 
   def show
     @life_hack = LifeHack.find(params[:id])
+  end
+
+  def destroy
+    @life_hack = LifeHack.find(params[:id])
+    @life_hack.destroy
+    redirect_to root_path, notice: "Article Deleted"
   end
 
   private
