@@ -17,13 +17,16 @@ class LikesController < ApplicationController
    end
 
    def update
-
     @like = Like.find(params[:id])
-    @like.score = params[:like][:score]
-    @like.save
-    redirect_to review_path(@like.review),
-    notice: 'Updated'
-
+    if @like.score != params[:like][:score].to_i
+      @like.score = params[:like][:score]
+      @like.save
+      redirect_to review_path(@like.review),
+      notice: 'Updated'
+    else
+      redirect_to review_path(@like.review),
+      alert: 'You already voted for this.'
+    end
   end
 
 
