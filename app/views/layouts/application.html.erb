@@ -12,30 +12,49 @@
   </head>
 
   <body>
-    <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
-      <nav>
-          <ul>
-              <% if !user_signed_in? %>
-                <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                <li><%= link_to "Sign In", new_user_session_path %></li>
-              <% else %>
-                <li>Welcome <%= current_user.name %></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-                <li><%= image_tag(current_user.avatar.url) %></li>
-              <% end %>
-          </ul>
-      </nav>
-    <% end %>
 
-    <% if flash[:notice].present? %>
-      <%= flash[:notice] %>
-    <% end %>
+    <div class = 'row'>
+      <div class = 'small-12 columns'>
 
-    <% if flash[:alert].present? %>
-      <%= flash[:alert] %>
-    <% end %>
+        <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
+          <nav class = "top-bar">
 
-    <%= yield %>
+              <ul class = 'left'>
+                  <% if !user_signed_in? %>
+                    <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                    <li><%= link_to "Sign In", new_user_session_path %></li>
+                  <% else %>
+                    <li>Welcome <%= current_user.name %></li>
+                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                    <li><%= image_tag(current_user.avatar.url) %></li>
+                  <% end %>
+              </ul>
+
+              <ul class = 'right'>
+                <%= form_tag(life_hacks_path(), method: :get) do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search Life Hacks" %>
+                  </p>
+                <% end %>
+              </ul>
+          </nav>
+        <% end %>
+
+
+        <% if flash[:notice].present? %>
+          <%= flash[:notice] %>
+        <% end %>
+
+        <% if flash[:alert].present? %>
+          <%= flash[:alert] %>
+        <% end %>
+
+        <%= yield %>
+
+      </div>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
