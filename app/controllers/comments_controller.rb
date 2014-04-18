@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :destroy]
-  before_filter :authorize_user, only: :delete
+  before_filter :authorize_user, only: :destroy
 
   def new
     @review = Review.find(params[:review_id])
@@ -33,12 +33,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body, :review_id)
-  end
-
-  def authorize_user
-    unless user_signed_in? && current_user.admin?
-      raise ActionController::RoutingError.new('Not Found')
-    end
   end
 
 end
