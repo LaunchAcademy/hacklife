@@ -1,5 +1,6 @@
 class LifeHacksController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
+  before_filter :authorize_user, only: :destroy
 
   def new
     @life_hack = LifeHack.new
@@ -33,5 +34,11 @@ class LifeHacksController < ApplicationController
 
   def life_hack_params
     params.require(:life_hack).permit(:title, :link, :content)
+  end
+
+  def authorize_user
+    unless user_signed_in? && current_user.admin?
+      raise ApplicationController::RoutingError.new('Not Found')
+    end
   end
 end

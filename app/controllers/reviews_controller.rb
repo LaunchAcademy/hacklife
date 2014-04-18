@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
+  before_filter :authorize_user, only: :destroy
 
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
@@ -34,6 +35,12 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title,:body,:rating)
+  end
+
+  def authorize_user
+    unless user_signed_in? && current_user.admin?
+      raise ApplicationController::RoutingError.new('Not Found')
+    end
   end
 
 end

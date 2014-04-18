@@ -11,9 +11,11 @@ feature 'add delete functionality', %q{
       sign_in_as(admin)
     end
 
+    given(:life_hack){ FactoryGirl.create(:life_hack) }
+    given(:review){ FactoryGirl.create(:life_hack) }
+
     scenario 'I am able to delete an article as an authorized admin' do
-      life_hack = FactoryGirl.create(:life_hack)
-       review = FactoryGirl.create(:review, life_hack: life_hack)
+      review = FactoryGirl.create(:review, life_hack: life_hack)
       previous_count = LifeHack.count
       visit life_hack_path(life_hack)
       click_on "Delete"
@@ -22,7 +24,6 @@ feature 'add delete functionality', %q{
     end
 
     scenario 'I am able to delete a review as an authorized admin' do
-      life_hack = FactoryGirl.create(:life_hack)
       review = FactoryGirl.create(:review, life_hack: life_hack)
       review_previous_count = Review.count
       visit review_path(review)
@@ -32,7 +33,6 @@ feature 'add delete functionality', %q{
     end
 
     scenario 'I am able to delete a comment as an authorized admin' do
-      life_hack = FactoryGirl.create(:life_hack)
       review = FactoryGirl.create(:review, life_hack: life_hack)
       comment = FactoryGirl.create(:comment, review: review)
       review_previous_count = Review.count
