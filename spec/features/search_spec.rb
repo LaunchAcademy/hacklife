@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user signs up' , %Q{
+feature 'user searches for lifehack' , %Q{
   As an unauthenticated user
   I want to search life hacks
   so that I can find hacks that are interesting to me

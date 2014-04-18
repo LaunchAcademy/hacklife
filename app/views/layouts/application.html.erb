@@ -30,7 +30,7 @@
               </ul>
             
               <ul class = 'right'>
-                <%= form_tag(root_path(), method: :get) do %>
+                <%= form_tag(life_hacks_path(), method: :get) do %>
                   <p>
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Search Life Hacks" %>

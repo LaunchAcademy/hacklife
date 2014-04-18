@@ -7,7 +7,7 @@ class LifeHack < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where("title like ? or content like ?", "%#{search}%","%#{search}%")
+      where("title ilike ? or content ilike ?", "%#{search}%","%#{search}%")
     else
       find(:all)
     end

@@ -27,12 +27,6 @@ class LifeHacksController < ApplicationController
     @life_hack = LifeHack.find(params[:id])
   end
   
-  # def search
-  #   @life_hacks = LifeHack.search(params[:search])
-  #   
-  #   render :index
-  # end
-  
   private
 
   def life_hack_params
