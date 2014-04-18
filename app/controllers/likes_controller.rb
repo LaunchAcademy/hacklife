@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
- before_filter :authenticate_user!, only: [:create, :new]
+  before_filter :authenticate_user!
 
    def create
     @like = Like.new(like_params)
