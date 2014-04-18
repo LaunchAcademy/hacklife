@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
 
-  before_filter :authenticate_user!, only: [:new, :create]
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = Review.new
@@ -23,6 +22,12 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to root_path, notice: "Review Deleted"
   end
 
   private

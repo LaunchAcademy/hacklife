@@ -6,8 +6,8 @@ Hacklife::Application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :reviews, only: [:show] do
-    resources :comments, only: [:new, :create]
+  resources :reviews, only: [:show, :destroy] do
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
