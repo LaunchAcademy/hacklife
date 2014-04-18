@@ -10,6 +10,7 @@ FactoryGirl.define do
     end
     password 'password'
     password_confirmation 'password'
+    admin false
   end
 
   factory :life_hack do

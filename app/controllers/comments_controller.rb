@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :destroy]
+  before_filter :authorize_user, only: :destroy
 
-  before_filter :authenticate_user!, only: [:new, :create]
   def new
     @review = Review.find(params[:review_id])
     @comment = Comment.new
@@ -19,6 +20,13 @@ class CommentsController < ApplicationController
       flash[:alert] = 'Comment unsuccessful'
       render :new
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:review_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to root_path, notice: "Comment Deleted"
   end
 
   private

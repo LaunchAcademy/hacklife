@@ -8,15 +8,15 @@ feature 'user adds a lifehack', %Q{
 
 
     context 'as an authenticated user' do
-      
-    let(:user){ FactoryGirl.create(:user) }
-    
+
+    given(:user){ FactoryGirl.create(:user) }
+
     before :each do
       sign_in_as(user)
     end
-    
+
     scenario 'successfully adds a lifehack' do
-    
+
       pre_count = LifeHack.count
       visit new_life_hack_path
       fill_in 'Link', with: 'www.lifehack.com'
@@ -31,7 +31,7 @@ feature 'user adds a lifehack', %Q{
     end
 
     scenario 'enters invalid lifehack' do
-     
+
       pre_count = LifeHack.count
       visit new_life_hack_path
 

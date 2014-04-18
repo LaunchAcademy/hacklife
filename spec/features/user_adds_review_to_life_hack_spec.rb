@@ -7,8 +7,8 @@ feature 'user can create a review for a specific article', %Q{As a user
 
   context 'as an authenticated user' do
 
-    let(:user){ FactoryGirl.create(:user) }
-    let(:life_hack){ FactoryGirl.create(:life_hack) }
+    given(:user){ FactoryGirl.create(:user) }
+    given(:life_hack){ FactoryGirl.create(:life_hack) }
 
     before :each do
       sign_in_as(user)

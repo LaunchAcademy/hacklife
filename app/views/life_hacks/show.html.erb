@@ -7,12 +7,18 @@
     <ul>
       <%  @life_hack.reviews.each do |review| %>
         <li>
-          <h4><%= review.title %></h4>
+          <h4><%= link_to review.title, review_path(review) %></h4>
           <%= review.body %>
         </li>
       <%end%>
     </ul>
   </div>
 <% end %>
+
+<ul>
+<% if user_signed_in? && current_user.admin? %>
+  <li><%= link_to 'Delete', life_hack_path(@life_hack), method: :delete %><li>
+<% end %>
+</ul>
 
 <%= link_to "Back to Life Hacks", life_hacks_path %>
