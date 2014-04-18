@@ -17,7 +17,8 @@
     
         <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
           <nav class = "top-bar">
-              <ul>   
+            
+              <ul class = 'left'>   
                   <% if !user_signed_in? %>
                     <li><%= link_to "Sign Up", new_user_registration_path %></li>
                     <li><%= link_to "Sign In", new_user_session_path %></li>
@@ -26,6 +27,15 @@
                     <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                     <li><%= image_tag(current_user.avatar.url) %></li>
                   <% end %>
+              </ul>
+            
+              <ul class = 'right'>
+                <%= form_tag(life_hacks_path(), method: :get) do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search Life Hacks" %>
+                  </p>
+                <% end %>
               </ul>
           </nav>
         <% end %>
