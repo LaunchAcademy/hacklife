@@ -17,7 +17,7 @@ class LikesController < ApplicationController
    end
 
    def update
-    @like = Like.find(params[:id])
+    @like = current_user.likes.find(params[:id])
     if @like.score != params[:like][:score].to_i
       @like.score = params[:like][:score]
       @like.save
