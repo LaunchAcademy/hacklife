@@ -12,13 +12,14 @@
   </head>
 
   <body>
+
     <div class = 'row'>
       <div class = 'small-12 columns'>
-    
+
         <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
           <nav class = "top-bar">
-            
-              <ul class = 'left'>   
+
+              <ul class = 'left'>
                   <% if !user_signed_in? %>
                     <li><%= link_to "Sign Up", new_user_registration_path %></li>
                     <li><%= link_to "Sign In", new_user_session_path %></li>
@@ -28,7 +29,7 @@
                     <li><%= image_tag(current_user.avatar.url) %></li>
                   <% end %>
               </ul>
-            
+
               <ul class = 'right'>
                 <%= form_tag(life_hacks_path(), method: :get) do %>
                   <p>
@@ -40,6 +41,7 @@
           </nav>
         <% end %>
 
+
         <% if flash[:notice].present? %>
           <%= flash[:notice] %>
         <% end %>
@@ -49,10 +51,10 @@
         <% end %>
 
         <%= yield %>
-    
+
       </div>
     </div>
-  
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
