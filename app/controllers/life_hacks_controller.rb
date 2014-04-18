@@ -17,12 +17,17 @@ class LifeHacksController < ApplicationController
   end
 
   def index
-    @life_hacks = LifeHack.all
+    if params[:search]
+      @life_hacks = LifeHack.search(params[:search])
+    else
+      @life_hacks = LifeHack.all
+    end
   end
 
   def show
     @life_hack = LifeHack.find(params[:id])
   end
+<<<<<<< HEAD
 
   def destroy
     @life_hack = LifeHack.find(params[:id])
@@ -30,6 +35,9 @@ class LifeHacksController < ApplicationController
     redirect_to root_path, notice: "Article Deleted"
   end
 
+=======
+  
+>>>>>>> 066ee964a2da598cf5e8b904ad28101b33dbd173
   private
 
   def life_hack_params

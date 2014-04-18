@@ -2,6 +2,10 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new, :destroy]
   before_filter :authorize_user, only: :destroy
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 066ee964a2da598cf5e8b904ad28101b33dbd173
   def new
     @life_hack = LifeHack.find(params[:life_hack_id])
     @review = Review.new
@@ -23,6 +27,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @like = @review.likes.find_by(user: current_user) || Like.new
   end
 
   def destroy

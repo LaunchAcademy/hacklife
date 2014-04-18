@@ -31,6 +31,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
 gem 'foundation-rails'
+gem 'fog'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
