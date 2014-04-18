@@ -7,7 +7,7 @@
     <ul>
       <%  @life_hack.reviews.each do |review| %>
         <li>
-          <h4><%= review.title %></h4>
+          <h4><%= link_to review.title, review_path(review) %></h4>
           <%= review.body %>
         </li>
       <%end%>
