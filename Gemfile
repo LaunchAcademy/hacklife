@@ -33,8 +33,6 @@ gem 'carrierwave'
 gem 'foundation-rails'
 gem 'fog'
 
-gem 'dotenv-rails'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,6 +41,8 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'pry-rails'
+  gem 'dotenv-rails'
+  gem 'quiet_assets'
 end
 
 group :test do
