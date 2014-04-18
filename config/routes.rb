@@ -2,8 +2,7 @@ Hacklife::Application.routes.draw do
   devise_for :users
   root 'life_hacks#index'
 
-  # get 'life_hacks/search' => 'life_hacks#search'
-  resources :life_hacks, only: [:new, :index, :create, :show, :search] do
+  resources :life_hacks, only: [:new, :index, :create, :show] do
     resources :reviews, only: [:new, :create]
   end
 
