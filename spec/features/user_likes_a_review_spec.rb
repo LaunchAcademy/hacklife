@@ -46,15 +46,5 @@ feature 'user can like a specific review for a lifehack', %q{
       expect(page).to have_content 'Updated'
     end
 
-    scenario 'user tries to vote with same score again' do
-
-      visit review_path(review)
-      click_button 'Like'
-      click_button 'Like'
-
-      expect(page).to have_content 'Vote failed.'
-    end
-
-
   end
 end

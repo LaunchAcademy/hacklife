@@ -4,29 +4,20 @@ class LikesController < ApplicationController
    def create
     @like = Like.new(like_params)
     @like.user = current_user
-
     if @like.save
       redirect_to review_path(@like.review),
       notice: 'You Voted!'
     else
       redirect_to review_path(@like.review),
       alert: 'Vote failed.'
-
     end
-
    end
 
    def update
     @like = current_user.likes.find(params[:id])
-    if @like.score != params[:like][:score].to_i
-      @like.score = params[:like][:score]
-      @like.save
-      redirect_to review_path(@like.review),
-      notice: 'Updated'
-    else
-      redirect_to review_path(@like.review),
-      alert: 'Vote failed.'
-    end
+    @like.update(like_params)
+    flash[:notice] = 'Updated.'
+    redirect_to review_path(@like.review)
   end
 
 
