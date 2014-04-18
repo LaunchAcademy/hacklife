@@ -27,7 +27,6 @@ class LifeHacksController < ApplicationController
   def show
     @life_hack = LifeHack.find(params[:id])
   end
-<<<<<<< HEAD
 
   def destroy
     @life_hack = LifeHack.find(params[:id])
@@ -35,9 +34,7 @@ class LifeHacksController < ApplicationController
     redirect_to root_path, notice: "Article Deleted"
   end
 
-=======
-  
->>>>>>> 066ee964a2da598cf5e8b904ad28101b33dbd173
+
   private
 
   def life_hack_params

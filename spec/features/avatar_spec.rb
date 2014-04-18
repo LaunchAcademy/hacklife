@@ -13,7 +13,7 @@ feature 'user can have avatar' , %Q{
     fill_in "Username", with: "dragonburglar"
     fill_in "Email", with: "dragonburglar@gmail.com"
     file_path = 'spec/features/wizard.png'
-    attach_file('user_image', file_path)
+    attach_file('user_avatar', file_path)
     fill_in 'user_password', with: "password"
     fill_in "Password confirmation", with: "password"
 
