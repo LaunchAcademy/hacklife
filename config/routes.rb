@@ -2,12 +2,12 @@ Hacklife::Application.routes.draw do
   devise_for :users
   root 'life_hacks#index'
 
-  resources :life_hacks, only: [:new, :index, :create, :show] do
+  resources :life_hacks, only: [:new, :index, :create, :show, :destroy] do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :reviews, only: [:show] do
-    resources :comments, only: [:new, :create]
+  resources :reviews, only: [:show, :destroy] do
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   resources :likes, only: [:create, :update]

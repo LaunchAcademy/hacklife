@@ -12,5 +12,6 @@ describe Review do
 
   it { should belong_to(:life_hack) }
   it { should belong_to(:user) }
-    
+
+  it { should have_many(:comments).dependent(:destroy) }
 end

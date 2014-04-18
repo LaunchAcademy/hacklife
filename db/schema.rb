@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20140417190216) do
+=======
 ActiveRecord::Schema.define(version: 20140409185645) do
+>>>>>>> 066ee964a2da598cf5e8b904ad28101b33dbd173
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,14 +60,14 @@ ActiveRecord::Schema.define(version: 20140409185645) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                                null: false
-    t.string   "username",                            null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "name",                                   null: false
+    t.string   "username",                               null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -71,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140409185645) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar"
+    t.boolean  "admin",                  default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

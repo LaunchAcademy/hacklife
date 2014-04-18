@@ -29,11 +29,22 @@
       <%  @review.comments.each do |comment| %>
         <li>
           <%= comment.body %>
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to 'Delete Comment', review_comment_path(@review, comment), method: :delete %>
+          <% end %>
         </li>
       <%end%>
     </ul>
   </div>
 <% end %>
 
+<<<<<<< HEAD
+<ul>
+<% if user_signed_in? && current_user.admin? %>
+  <li><%= link_to 'Delete', review_path(@review), method: :delete %></li>
+  <% end %>
+</ul>
+=======
+>>>>>>> 066ee964a2da598cf5e8b904ad28101b33dbd173
 
 <%= link_to 'Back to Hack', life_hacks_path %>
