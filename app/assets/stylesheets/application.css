@@ -15,6 +15,14 @@
  */
 form {
   max-width: 200px;
-  background: #ddeeff;
+  background: #fff;
 }
 
+nav.top-bar li {
+  list-style: none;
+  padding: 0 1%;
+}
+
+div.lifehack {
+  padding-bottom: 20px;
+}

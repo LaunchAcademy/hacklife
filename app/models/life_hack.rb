@@ -4,6 +4,7 @@ class LifeHack < ActiveRecord::Base
 
   belongs_to :user
   has_many :reviews
+  has_one :rating
   
   def self.search(search)
     if search
@@ -12,4 +13,21 @@ class LifeHack < ActiveRecord::Base
       find(:all)
     end
   end
+  
+  def rating
+    rating = 0
+    count = 0
+    if reviews.exists?
+      reviews.each do |review|
+        rating += review.rating
+        count += 1
+      end
+    end
+    if count != 0 
+      rating/count
+    else
+        0
+    end
+  end
+  
 end

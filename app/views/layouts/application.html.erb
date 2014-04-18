@@ -14,31 +14,39 @@
   <body>
     <div class = 'row'>
       <div class = 'small-12 columns'>
-    
-        <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
-          <nav class = "top-bar">
+          <nav class = "top-bar">            
+            <section class='top-bar-section'>
             
-              <ul class = 'left'>   
+            <div class='medium-8 columns'>
+              <ul>   
+                <li class='name'><%= link_to "Home", root_path %></li>
+                <li class='name'><%= link_to "Trending", root_path %></li>
+                <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
+                
                   <% if !user_signed_in? %>
-                    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                    <li><%= link_to "Sign In", new_user_session_path %></li>
+                    <li class='name'><%= link_to "Sign Up", new_user_registration_path %></li>
+                    <li class='name'><%= link_to "Sign In", new_user_session_path %></li>
                   <% else %>
-                    <li>Welcome <%= current_user.name %></li>
-                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-                    <li><%= image_tag(current_user.avatar.url) %></li>
+                    <li class='name'><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                    <li class='name'><%= image_tag(current_user.avatar.url) %></li>
                   <% end %>
+                
+                <% end %>
+                
+                <li class='name'><%= link_to "About", about_path %></li>
+                <li class='name'><a href="#" class="fc-webicon facebook">Like us on Facebook</a></li>
+                
               </ul>
-            
+            </div>
+            <di class='small-3 columns'>
               <ul class = 'right'>
                 <%= form_tag(life_hacks_path(), method: :get) do %>
-                  <p>
                     <%= text_field_tag :search, params[:search] %>
                     <%= submit_tag "Search Life Hacks" %>
-                  </p>
                 <% end %>
               </ul>
+            </div>
           </nav>
-        <% end %>
 
         <% if flash[:notice].present? %>
           <%= flash[:notice] %>
@@ -48,6 +56,9 @@
           <%= flash[:alert] %>
         <% end %>
 
+        <% if user_signed_in? %>
+          <h2>Welcome <%= current_user.name %></h2>
+        <% end %>
         <%= yield %>
     
       </div>
