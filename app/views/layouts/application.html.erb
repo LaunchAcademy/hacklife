@@ -21,7 +21,7 @@
               <% else %>
                 <li>Welcome <%= current_user.name %></li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-                <li><%= image_tag(current_user.avatar.url) %></li>
+                <li><%= image_tag(current_user.avatar.url('avatar')) %></li>
               <% end %>
           </ul>
       </nav>
