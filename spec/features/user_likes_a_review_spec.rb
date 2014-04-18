@@ -52,7 +52,7 @@ feature 'user can like a specific review for a lifehack', %q{
       click_button 'Like'
       click_button 'Like'
 
-      expect(page).to have_content 'You already voted for this.'
+      expect(page).to have_content 'Vote failed.'
     end
 
 

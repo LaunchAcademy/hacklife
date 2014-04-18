@@ -10,7 +10,7 @@ class LikesController < ApplicationController
       notice: 'You Voted!'
     else
       redirect_to review_path(@like.review),
-      alert: 'You already voted for this.'
+      alert: 'Vote failed.'
 
     end
 
@@ -25,7 +25,7 @@ class LikesController < ApplicationController
       notice: 'Updated'
     else
       redirect_to review_path(@like.review),
-      alert: 'You already voted for this.'
+      alert: 'Vote failed.'
     end
   end
 
