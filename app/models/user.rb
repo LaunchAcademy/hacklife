@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :life_hacks
   has_many :reviews
   validates :admin, inclusion: { in: [true, false] }
-
   has_many :likes
 
   mount_uploader :avatar, AvatarUploader

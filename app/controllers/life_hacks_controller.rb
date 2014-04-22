@@ -18,10 +18,14 @@ class LifeHacksController < ApplicationController
 
   def index
     if params[:search]
-      @life_hacks = LifeHack.search(params[:search])
+      @life_hacks = LifeHack.search(params[:search]).page(params[:page]).per(20)
     else
-      @life_hacks = LifeHack.all
+      @life_hacks = LifeHack.all.page(params[:page]).per(20)
     end
+  end
+
+  def about
+
   end
 
   def show

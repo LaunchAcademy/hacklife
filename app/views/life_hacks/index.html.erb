@@ -1,10 +1,12 @@
 <h1>LifeHacks</h1>
+<p><%= link_to 'Add Life Hack', new_life_hack_path %></p>
+
+<%= paginate @life_hacks %>
 
     <% @life_hacks.each do |life_hack| %>
-    <div>
+    <div class='lifehack'>
+      <%= life_hack.rating %>Stars
       <%= link_to life_hack.title, life_hack %>
       <%= life_hack.content %>
-      </div>
+    </div>
     <% end %>
-
-<p><%= link_to 'Add Life Hack', new_life_hack_path %></p>
