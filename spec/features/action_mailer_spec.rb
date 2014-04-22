@@ -29,7 +29,7 @@ feature 'sending email notifications', %q{
 
     last_email = ActionMailer::Base.deliveries.last
     expect(last_email).to have_subject('New Life Hack Review!')
-    expect(last_email).should deliver_to('spy1@isis.com')
+    expect(last_email).to deliver_to(life_hack.user.email)
     expect(last_email).to have_body_text('Your Life Hack has been reviewed!')
   end
 end
