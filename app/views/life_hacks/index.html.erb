@@ -1,5 +1,7 @@
 <h1>LifeHacks</h1>
 
+<%= paginate @life_hacks %>
+
     <% @life_hacks.each do |life_hack| %>
     <div>
       <%= link_to life_hack.title, life_hack %>
