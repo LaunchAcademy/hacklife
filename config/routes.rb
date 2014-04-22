@@ -1,6 +1,7 @@
 Hacklife::Application.routes.draw do
   devise_for :users
   root 'life_hacks#index'
+  get 'about' => 'life_hacks#about'
 
   resources :life_hacks, only: [:new, :index, :create, :show, :destroy] do
     resources :reviews, only: [:new, :create]
