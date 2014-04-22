@@ -23,9 +23,9 @@ class LifeHacksController < ApplicationController
       @life_hacks = LifeHack.all.page(params[:page]).per(20)
     end
   end
-  
+
   def about
-    
+
   end
 
   def show
@@ -37,7 +37,6 @@ class LifeHacksController < ApplicationController
     @life_hack.destroy
     redirect_to root_path, notice: "Article Deleted"
   end
-
 
   private
 

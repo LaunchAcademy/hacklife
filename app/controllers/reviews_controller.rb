@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
+      ReviewMailer.notify(@life_hack.user).deliver
       redirect_to life_hack_path(@life_hack),
         notice: 'Review was successfully added'
     else

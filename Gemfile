@@ -50,6 +50,11 @@ group :test do
 	gem 'valid_attribute'
 	gem 'capybara'
 	gem 'launchy'
+  gem 'email_spec'
+end
+
+group :development do
+  gem 'mailcatcher'
 end
 
 
