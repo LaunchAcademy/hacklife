@@ -1,6 +1,3 @@
-require 'dotenv'
-Dotenv.load
-
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS',
@@ -9,5 +6,4 @@ CarrierWave.configure do |config|
     }
 
   config.fog_directory = "hack-life-avatar-#{Rails.env}"
-  config.fog_public = false
-end
+  end
